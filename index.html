@@ -1074,7 +1074,7 @@ button.small-btn {
       <div class="stat-subtext" id="all-time-trades">0 trades</div>
     </div>
     <div class="stat-card">
-      <div class="stat-label">Win Rate (This Month)</div>
+      <div class="stat-label">Overall Win Rate</div>
       <div class="stat-value" id="win-rate" style="color: var(--accent-cyan);">—</div>
       <div class="stat-subtext" id="win-rate-details">No trades yet</div>
     </div>
@@ -3191,11 +3191,11 @@ function updateDashboard() {
   document.getElementById('all-time-trades').textContent = allTimeCount + ' ' + (allTimeCount === 1 ? 'trade' : 'trades');
 
   // Win rate
-  const monthTrades = getTradesForPeriod('month');
-  const wins = monthTrades.filter(t => getTradePl(t) > 0).length;
-  const winRate = monthTrades.length > 0 ? (wins / monthTrades.length * 100).toFixed(1) : 0;
+  const wins = trades.filter(t => getTradePl(t) > 0).length;
+  const winRate = trades.length > 0 ? (wins / trades.length * 100).toFixed(1) : 0;
+  const monthTrades = trades;
   document.getElementById('win-rate').textContent = monthTrades.length > 0 ? winRate + '%' : '—';
-  document.getElementById('win-rate-details').textContent = wins + ' wins / ' + monthTrades.length + ' trades';
+  document.getElementById('win-rate-details').textContent = wins + ' wins / ' + trades.length + ' trades';
 
   if (bestTrade) {
     document.getElementById('best-trade').textContent = formatCurrency(getTradePl(bestTrade));
