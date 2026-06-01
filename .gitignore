@@ -1,0 +1,7 @@
+.venv/
+__pycache__/
+*.pyc
+futures_platform.db
+*.db
+api_settings.json
+trades.json
