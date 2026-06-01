@@ -1298,6 +1298,7 @@ button.small-btn {
           <input type="file" id="csvImport" accept=".csv,text/csv" onchange="handleTradingViewCsvImport(event)">
         </div>
       </div>
+      <button class="red" onclick="clearAllTrades()" style="margin-top: 12px;">Clear All Trades</button>
       <div id="csv-import-feedback" class="small" style="display:none; margin-top: 8px;"></div>
     </section>
 
@@ -1314,7 +1315,6 @@ button.small-btn {
         </div>
         <button onclick="applyCustomDateRange('journal')">Apply Range</button>
         <button class="gray" onclick="clearCustomDateRange()">Show All</button>
-        <button class="red" onclick="clearAllTrades()">Clear All Trades</button>
       </div>
       <div id="journal-period-filter" class="period-filter" style="display: none;">
         <div>
