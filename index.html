@@ -1314,6 +1314,7 @@ button.small-btn {
         </div>
         <button onclick="applyCustomDateRange('journal')">Apply Range</button>
         <button class="gray" onclick="clearCustomDateRange()">Show All</button>
+        <button class="red" onclick="clearAllTrades()">Clear All Trades</button>
       </div>
       <div id="journal-period-filter" class="period-filter" style="display: none;">
         <div>
@@ -3644,6 +3645,26 @@ function deleteTrade(index) {
     renderAllTrades();
     updateDashboard();
   }
+}
+
+function clearAllTrades() {
+  if (!trades.length) {
+    alert('There are no trades to clear.');
+    return;
+  }
+
+  const firstConfirm = confirm(`This will permanently delete all ${trades.length} trades from your journal. Continue?`);
+  if (!firstConfirm) return;
+
+  const secondConfirm = confirm('Final confirmation: clear the entire trade journal for this account? This cannot be undone.');
+  if (!secondConfirm) return;
+
+  trades = [];
+  selectedJournalSessionKey = '';
+  save();
+  renderAllTrades();
+  updateDashboard();
+  updateStats();
 }
 
 function getConditionStatsRows(groupedTrades) {
